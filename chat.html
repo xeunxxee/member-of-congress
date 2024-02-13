@@ -49,19 +49,45 @@
           <div class="chat-row-info">
             <div>
               <p class="chat-row-messege messege">
-                '한두희' 국회의원님을 위한 <br /><br />
-                금주의 이슈 키워드 순위를 알려드립니다.
+                '한두희' 국회의원님의 관심사에 따른 <br /><br />
+                금주 이슈 관심 순위를 알려드립니다.
               </p>
               <p class="chat-row-messege messege">
                 키워드를 눌러 자세한 내용을 확인해보세요.
               </p>
               <p class="chat-row-messege">
-                <button class="chat-row-messege-vote" id="dog">1. 개</button>
-                <button class="chat-row-messege-vote" id="airplane">
-                  2. 항공기
+                <button
+                  onclick="showKeyword('dog')"
+                  class="chat-row-messege-vote"
+                  id="dog"
+                >
+                  1위
+                  <img
+                    src="C:\Users\User\Desktop\national-assembly-contest-국회의원ver\keyword_images\dog.PNG"
+                    class="chat-keywordimage"
+                  />
                 </button>
-                <button class="chat-row-messege-vote" id="import">
-                  3. 수입
+                <button
+                  onclick="showKeyword('drug')"
+                  class="chat-row-messege-vote"
+                  id="drug"
+                >
+                  2위
+                  <img
+                    src="C:\Users\User\Desktop\national-assembly-contest-국회의원ver\keyword_images\drug.PNG"
+                    class="chat-keywordimage"
+                  />
+                </button>
+                <button
+                  onclick="showKeyword('food')"
+                  class="chat-row-messege-vote"
+                  id="food"
+                >
+                  3위
+                  <img
+                    src="C:\Users\User\Desktop\national-assembly-contest-국회의원ver\keyword_images\food.PNG"
+                    class="chat-keywordimage"
+                  />
                 </button>
               </p>
             </div>
@@ -81,102 +107,6 @@
           투표 현황
         </button>
       </div>
-
-      <script>
-        // 각 버튼을 가져오기
-        const buttons = document.querySelectorAll(".chat-row-messege-vote");
-
-        // 각 버튼에 클릭 이벤트 추가
-        buttons.forEach((button) => {
-          button.addEventListener("click", buttonClickHandler);
-        });
-
-        // 버튼 클릭 시 실행될 함수
-        function buttonClickHandler(event) {
-          // 새로운 채팅 행을 생성
-          const newChatRow = document.createElement("div");
-          newChatRow.classList.add("chat-row", "row");
-
-          // 이미지 요소 생성 및 설정
-          const newImg = document.createElement("img");
-          newImg.classList.add("chat-row-img");
-          newImg.src = "img/cats1.png";
-
-          // chat-row-text 요소 생성
-          const newRowText = document.createElement("div");
-          newRowText.classList.add("chat-row-text");
-
-          // 이름 요소 생성
-          const newName = document.createElement("p");
-          newName.classList.add("chat-row-name");
-          newName.textContent = "오늘의 이슈, 오늘의 개정";
-
-          // 내용 요소 생성
-          const newContent = document.createElement("div");
-          newContent.classList.add("chat-row-info");
-
-          // 메시지 내용 설정
-          switch (event.currentTarget.id) {
-            case "airplane":
-              appendMessage(
-                newContent,
-                "img/승희.jpg",
-                "항공기 뭐시기",
-                "https://naver.com"
-              );
-              break;
-            case "dog":
-              appendMessage(
-                newContent,
-                "img/댕댕이.jpg",
-                "개가 어쩌구 저쩌구",
-                "https://naver.com"
-              );
-              break;
-            case "import":
-              appendMessage(
-                newContent,
-                "img/치즈.jpg",
-                "수입 영양소 문제있다",
-                "https://naver.com"
-              );
-              break;
-          }
-
-          // chat-row-text 요소에 이름 요소와 내용 요소 추가
-          newRowText.appendChild(newName);
-          newRowText.appendChild(newContent);
-
-          // 새로운 div에 이미지 요소와 chat-row-text 요소 추가
-          newChatRow.appendChild(newImg);
-          newChatRow.appendChild(newRowText);
-
-          // 채팅창에 새로운 채팅 행 추가
-          document.querySelector(".chat-screen").appendChild(newChatRow);
-        }
-
-        // 내용에 메시지를 추가하는 함수
-        function appendMessage(container, imageSrc, messageText, linkURL) {
-          // 이미지 요소 생성
-          const newArticleImage = document.createElement("img");
-          newArticleImage.classList.add("article-image");
-          newArticleImage.src = imageSrc;
-          newArticleImage.alt = "Attached Image";
-
-          // 메시지 요소 생성
-          const newMessage = document.createElement("p");
-          newMessage.classList.add("chat-row-messege");
-          newMessage.innerHTML = `
-            ${newArticleImage.outerHTML}
-            ${messageText}
-            <br/>
-            <a href="${linkURL}" target="_blank">자세한 기사 보러가기</a>
-          `;
-
-          // 내용 요소에 메시지 요소 추가
-          container.appendChild(newMessage);
-        }
-      </script>
     </main>
 
     <form class="reply">
@@ -195,6 +125,38 @@
         </button>
       </div>
     </form>
+
+    <script>
+      function showKeyword(keyword) {
+        // 해당 키워드에 대한 이미지 경로 설정
+        let imagePath = "";
+        switch (keyword) {
+          case "dog":
+            imagePath = "keyword_images/dog.PNG";
+            break;
+          case "drug":
+            imagePath = "keyword_images/drug.PNG";
+            break;
+          case "food":
+            imagePath = "keyword_images/food.PNG";
+            break;
+        }
+
+        // 새로운 div 생성
+        const newDiv = document.createElement("div");
+
+        // 이미지 요소 생성 및 설정
+        const newImage = document.createElement("img");
+        newImage.src = imagePath;
+        newImage.classList.add("keyword-image");
+
+        // div에 이미지 추가
+        newDiv.appendChild(newImage);
+
+        // 생성한 div를 기존 문서에 추가
+        document.body.appendChild(newDiv);
+      }
+    </script>
 
     <script>
       /* 하단 3가지 버튼 */

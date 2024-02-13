@@ -82,7 +82,11 @@
     border-radius: 18px;
     margin-right: 10px;
 }
-
+.chat-keywordimage {
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+}
 .chat-row-img-hidden {
     width: 45px;
     height: 45px;
@@ -113,6 +117,8 @@
     border-top-left-radius: 0;
     padding:10px;
     margin: 7px 0px 0px 0px;
+    display: flex;
+
 }
 
 .row--me {
@@ -266,6 +272,12 @@
 .chat-row-messege-vote {
     border: none; /* 윤곽선 제거 */
     background-color: white; /* 배경을 흰색으로 설정 */
+    font-weight: bold;
+    font-size: 1.2em; /* 텍스트 크기 2배로 설정 */
+    display: flex;
+    flex-direction: column; /* 요소들을 세로로 정렬하기 */
+    justify-content: center; /* 세로 중앙 정렬 */
+    align-items: center; /* 가로 중앙 정렬 */
   }
 
 /*버튼세개*/
