@@ -55,7 +55,7 @@
               <p class="chat-row-messege messege">
                 키워드를 눌러 자세한 내용을 확인해보세요.
               </p>
-              <p class="chat-row-messege">
+              <p class="chat-row-messege vote">
                 <button
                   onclick="showKeyword('dog')"
                   class="chat-row-messege-vote"
@@ -89,7 +89,6 @@
                 </button>
               </p>
             </div>
-            <p class="chat-row-time">9:00</p>
           </div>
         </div>
       </div>
@@ -130,23 +129,21 @@
         let imagePath = "";
         switch (keyword) {
           case "dog":
-            imagePath = "keyword_images/dog.PNG";
+            imagePath = "news_images/dog.PNG";
             break;
           case "drug":
-            imagePath = "keyword_images/drug.PNG";
+            imagePath = "news_images/drug.PNG";
             break;
           case "food":
-            imagePath = "keyword_images/food.PNG";
+            imagePath = "news_images/food.PNG";
             break;
         }
 
-        // 새로운 div 생성
+        // div생성, image생성 const화
         const newDiv = document.createElement("div");
-
-        // 이미지 요소 생성 및 설정
         const newImage = document.createElement("img");
         newImage.src = imagePath;
-        newImage.classList.add("keyword-image");
+        newImage.classList.add("chat-keywordimage");
 
         // div에 이미지 추가
         newDiv.appendChild(newImage);
@@ -167,11 +164,6 @@
         const newImg = document.createElement("img");
         newImg.classList.add("chat-row-img");
         newImg.src = "img/cats1.png";
-
-        // chat-row-name 요소 생성
-        const newRowText0 = document.createElement("p");
-        newRowText0.classList.add("chat-row-name");
-        newRowText0.textContent = "오늘의 이슈, 오늘의 개정";
 
         const newRowText = document.createElement("p");
         newRowText.classList.add("chat-row-messege");

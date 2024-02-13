@@ -117,7 +117,7 @@
     border-top-left-radius: 0;
     padding:10px;
     margin: 7px 0px 0px 0px;
-    display: flex;
+    
 
 }
 
@@ -153,7 +153,7 @@
     border-top-left-radius: 0;
     padding:10px;
     margin: 7px 0px 0px 0px;
-    display: flex;
+    isdplay: flex;
   }
   
   .current-message,
@@ -280,6 +280,12 @@
     align-items: center; /* 가로 중앙 정렬 */
   }
 
+.vote {
+    display: flex;
+    justify-content: center; /* 세로 중앙 정렬 */
+    align-items: center; /* 가로 중앙 정렬 */
+}
+
 /*버튼세개*/
 /* fixed-buttons */
 .fixed-buttons {
@@ -291,7 +297,7 @@
     justify-content: space-around; /* 버튼들을 좌측, 가운데, 우측으로 정렬 */
     padding: 10px;
     box-sizing: border-box;
-    z-index: 3; /* 다른 요소들 위에 나타나도록 설정 */
+    z-index: 100000; /* 다른 요소들 위에 나타나도록 설정 */
 }
 
 .fixed-button {
