@@ -1,0 +1,29 @@
+.screen-header {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px var(--space);
+    position:sticky;
+    top:35.6px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.screen-header_title {
+    font-weight: 600;
+    font-size: 25px;
+    text-align: center;    
+}
+
+.screen-header_icons>span {
+    margin-left: 25px;
+}
+
+@keyframes rotateicon {
+    from{transform: none;}
+    to{transform: rotatez(360deg);}
+}
+.screen-header_icons .fa-gear:hover{
+    animation: rotateicon 2s linear infinite;
+}

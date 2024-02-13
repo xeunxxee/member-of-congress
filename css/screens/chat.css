@@ -1,0 +1,315 @@
+.chat-body {
+    background-color: #c1d3ee;
+}
+.chat-body .status-bar {
+    background-color: #c1d3ee; !important
+}
+.chat-screen {
+    padding: 36px 15px 0px 15px;
+    padding-bottom: 85px;
+    /*margin-bottom: 140px; 버튼이 위치한 부분만큼 여유 공간을 주어 스크롤을 내려도 채팅창이 가려지지 않게 함 */
+}
+
+/* chat-header */
+
+.chat-header {
+    background-color: #c1d3ee;
+    position:sticky;
+    top:35.6px;
+    width: 100%;
+    box-sizing: border-box;
+    z-index:1000;
+
+}
+.chat-header-column {
+    display:flex;
+    justify-content: flex-start;
+    width: 33.33%;
+}
+
+.chat-header div:nth-child(2){
+    justify-content: space-evenly;
+}
+
+.chat-header div:last-child{
+    justify-content: flex-end;
+}
+
+.chat-header {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px var(--space);
+}
+
+.chat-header-column span {
+    justify-content:flex-end;
+}
+
+.chat-header-column span:first-child {
+    margin-right: 20px;
+}
+
+/* chat-date */
+
+.chat-date {
+    width:150px;
+    height:26px;
+    border-radius: 13px;
+    background-color: rgb(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color:white;
+    margin-bottom:20px;
+}
+.chat-date-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* chat-row */
+.chat-row {
+    display: flex;
+    width: 100%; 
+    margin-bottom:20px;
+}
+.chat-row-img {
+    width: 45px;
+    height: 45px;
+    border-radius: 18px;
+    margin-right: 10px;
+}
+
+.chat-row-img-hidden {
+    width: 45px;
+    height: 45px;
+    border-radius: 18px;
+    margin-right: 10px;
+    visibility: hidden;      
+}
+
+.chat-row-name,
+.chat-row-time {
+    font-size: 12px;
+    color:#696969;
+}
+
+.chat-row-time{
+    margin:0px 5px;
+}
+
+.chat-row-info {
+    display: flex;
+    align-items: flex-end;
+}
+
+.chat-row-messege {
+    background-color: white;
+    font-size: 15px;
+    border-radius: 15px;
+    border-top-left-radius: 0;
+    padding:10px;
+    margin: 7px 0px 0px 0px;
+}
+
+.row--me {
+    justify-content: flex-end;    
+}
+
+.messege--by-me {
+    background-color: #345434;
+    color:white;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 0;
+}
+
+.chat-message {
+    display: flex;
+    align-items: center;
+  }
+  
+  .article-image {
+    max-width: 100px; /* 이미지 최대 너비 조절 */
+    margin-right: 10px; /* 이미지와 텍스트 사이 여백 */
+  }
+  
+  .message-text {
+    margin: 0; /* 기본 마진 제거 */
+  }
+  .message-wrapper {
+    
+    background-color: white;
+    font-size: 15px;
+    border-radius: 15px;
+    border-top-left-radius: 0;
+    padding:10px;
+    margin: 7px 0px 0px 0px;
+    display: flex;
+  }
+  
+  .current-message,
+  .future-message {
+    flex: 1;
+    padding: 8px; /* 내용과 텍스트 간격을 조절할 수 있습니다. */
+  }
+  
+  .future-message {
+    text-align: right; /* 미래에 대한 내용을 오른쪽 정렬합니다. */
+  }
+
+/* reply */
+.reply {
+    position: fixed; 
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    transition: all .3s ease-in-out;
+    z-index: 2;
+}
+
+.reply__column:first-child{
+    width: 10%;
+}
+.reply__column:last-child{
+    width: 90%;
+    position: relative;
+}
+
+.reply__column > i{
+    color:#999999;
+}
+
+.reply__column:last-child>i,
+.reply__column:last-child button {
+    position:absolute;
+    right:2px;
+    bottom:3px;  
+}
+.reply__column:last-child > i {
+    right: 40px;
+    bottom:16px;
+}
+
+.reply__input {
+    padding:15px;
+    box-sizing: border-box;
+    height: 30px;
+    width:100%;
+    border: 1px solid #999999;
+    border-radius: 15px;
+    background-color:#f0f0f0;
+    transition: all .3s ease-in-out;
+}
+
+.reply__btn {
+    width:26px;
+    height: 26px;
+    border-radius: 13px;
+    border:0px;
+    background-color: #3498db;
+    align-items: center;
+    justify-content: center;
+}
+
+.reply__btn:focus,
+.reply__btn:active {
+    outline:none;
+}
+
+/* animation - bubble */
+@keyframes fade-in-from-bottom {
+    from {opacity: 0; transform: translatex(-30px);}
+    to {opacity: 1;}
+}
+
+.chat-row {
+    animation:0.8s fade-in-from-bottom ease-in-out forwards;
+}
+
+
+/* input transition */
+
+
+.reply .reply__column:first-child,
+.reply .fa-face-smile,
+.reply button {
+    transition: opacity .3s ease-in-out ;
+}
+
+
+.reply:focus-within .reply__column:first-child,
+.reply:focus-within .fa-face-smile,
+.reply:focus-within button {
+    opacity: 0;
+}
+
+.reply__input:focus {
+    width:98vw;
+    transform: translateX(-11%) translateY(-80px);
+}
+
+.reply:focus-within {
+    transform: translateY(80px);
+}
+
+
+/*공모전용 수정 */
+.chat-row-messege-vote {
+    border: none; /* 윤곽선 제거 */
+    background-color: white; /* 배경을 흰색으로 설정 */
+  }
+
+/*버튼세개*/
+/* fixed-buttons */
+.fixed-buttons {
+    position: fixed;
+    bottom:42px; /* 채팅 입력창 바로 위에 위치하도록 조정 */
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around; /* 버튼들을 좌측, 가운데, 우측으로 정렬 */
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 3; /* 다른 요소들 위에 나타나도록 설정 */
+}
+
+.fixed-button {
+    padding: 10px;
+    background-color: #2f6ac8; /* 버튼 배경색 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s; /* 배경색 변화에 애니메이션 추가 */
+}
+
+.fixed-button:hover {
+    background-color: #174896; /* 마우스 호버 시 배경색 변화 */
+}
+
+
+
+/* 국회의원 자세히보기 말풍선 조정 */
+.chat-row-messege a {
+    display: inline-block; /* 링크를 인라인 블록 요소로 설정하여 위치를 조정할 수 있게 함 */
+    margin-top: 5px; /* 다른 말풍선과의 간격 조정 */
+    padding: 5px 10px; /* 말풍선 내부 여백 설정 */
+    background-color: #3498db; /* 배경색 설정 */
+    color: white; /* 텍스트 색상 설정 */
+    border-radius: 5px; /* 테두리 모서리를 둥글게 만듦 */
+    margin-left: 10px; /* 이미지와 말풍선 사이의 간격 조정 */
+    
+}
+
+/*패딩조절들 아직 안함*/
+  

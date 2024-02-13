@@ -1,0 +1,50 @@
+.nav {
+    position: fixed;
+    bottom: 0;
+    width:100%;
+    background-color: #f9f9fa;
+    padding:20px 40px;
+    box-sizing: border-box;
+    border-top:1px solid #d3d3d3;
+}
+
+.nav__link{
+    color:#2e363e;
+}
+
+.nav__ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav__link {
+    position:relative;
+}
+
+@keyframes notification {
+    0% {transform: none;}
+    50% {transform: translatey(-4px);}
+    100% {transform: none;}
+}
+
+.nav__notification {
+    position:absolute;
+    bottom: 12px; left:13px;   
+    animation:notification 2s ease-in-out infinite;
+}
+.nav__notification-mini {
+    position:absolute;
+    bottom: 22px; left:26px;
+}
+
+@keyframes appearbtn {
+    from{ opacity: 0;} to{transform: none; opacity: 1;}
+}
+.nav__btn {
+    transform: translatey(80px);
+    opacity: 0;
+    animation:appearbtn 0.5s ease-in-out forwards;
+}
+.nav__btn:nth-child(2){animation-delay: 0.1s;} 
+.nav__btn:nth-child(3){animation-delay: 0.2s;} 
+.nav__btn:nth-child(4){animation-delay: 0.3s;} 

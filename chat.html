@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="css/styles.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat - Kokoa Clone</title>
+  </head>
+
+  <body class="chat-body">
+    <div class="status-bar">
+      <div class="status-bar__column">
+        <span>No Service</span>
+        <i class="fa-solid fa-wifi"></i>
+      </div>
+      <div class="status-bar__column">
+        <span>20:03</span>
+      </div>
+      <div class="status-bar__column">
+        <span>521%</span>
+        <i class="fa-solid fa-battery-full fa-2x"></i>
+        <i class="fa-solid fa-bolt-lightning"></i>
+      </div>
+    </div>
+
+    <header class="chat-header">
+      <div class="chat-header-column">
+        <a href="chats.html"><i class="fa-solid fa-chevron-left fa-lg"></i></a>
+      </div>
+      <div class="chat-header-column">
+        <h1 class="screen-header_title">for test</h1>
+      </div>
+      <div class="chat-header-column">
+        <span><i class="fa-solid fa-magnifying-glass fa-lg"></i></span>
+        <span><i class="fa-solid fa-bars fa-lg"></i></span>
+      </div>
+    </header>
+
+    <main class="chat-screen">
+      <div class="chat-date-box">
+        <a class="chat-date">Sunday, January, 2023</a>
+      </div>
+
+      <div class="chat-row row">
+        <img class="chat-row-img" src="img/cats1.png" />
+        <div class="chat-row-text">
+          <p class="chat-row-name">오늘의 이슈, 오늘의 개정</p>
+          <div class="chat-row-info">
+            <div>
+              <p class="chat-row-messege messege">
+                '한두희' 국회의원님을 위한 <br /><br />
+                금주의 이슈 키워드 순위를 알려드립니다.
+              </p>
+              <p class="chat-row-messege messege">
+                키워드를 눌러 자세한 내용을 확인해보세요.
+              </p>
+              <p class="chat-row-messege">
+                <button class="chat-row-messege-vote" id="dog">1. 개</button>
+                <button class="chat-row-messege-vote" id="airplane">
+                  2. 항공기
+                </button>
+                <button class="chat-row-messege-vote" id="import">
+                  3. 수입
+                </button>
+              </p>
+            </div>
+            <p class="chat-row-time">9:00</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="fixed-buttons">
+        <button class="fixed-button" onclick="createMessage('left')">
+          오늘의 이슈
+        </button>
+        <button class="fixed-button" onclick="createMessage('center')">
+          함께 논의
+        </button>
+        <button class="fixed-button" onclick="createMessage('right')">
+          투표 현황
+        </button>
+      </div>
+
+      <script>
+        // 각 버튼을 가져오기
+        const buttons = document.querySelectorAll(".chat-row-messege-vote");
+
+        // 각 버튼에 클릭 이벤트 추가
+        buttons.forEach((button) => {
+          button.addEventListener("click", buttonClickHandler);
+        });
+
+        // 버튼 클릭 시 실행될 함수
+        function buttonClickHandler(event) {
+          // 새로운 채팅 행을 생성
+          const newChatRow = document.createElement("div");
+          newChatRow.classList.add("chat-row", "row");
+
+          // 이미지 요소 생성 및 설정
+          const newImg = document.createElement("img");
+          newImg.classList.add("chat-row-img");
+          newImg.src = "img/cats1.png";
+
+          // chat-row-text 요소 생성
+          const newRowText = document.createElement("div");
+          newRowText.classList.add("chat-row-text");
+
+          // 이름 요소 생성
+          const newName = document.createElement("p");
+          newName.classList.add("chat-row-name");
+          newName.textContent = "오늘의 이슈, 오늘의 개정";
+
+          // 내용 요소 생성
+          const newContent = document.createElement("div");
+          newContent.classList.add("chat-row-info");
+
+          // 메시지 내용 설정
+          switch (event.currentTarget.id) {
+            case "airplane":
+              appendMessage(
+                newContent,
+                "img/승희.jpg",
+                "항공기 뭐시기",
+                "https://naver.com"
+              );
+              break;
+            case "dog":
+              appendMessage(
+                newContent,
+                "img/댕댕이.jpg",
+                "개가 어쩌구 저쩌구",
+                "https://naver.com"
+              );
+              break;
+            case "import":
+              appendMessage(
+                newContent,
+                "img/치즈.jpg",
+                "수입 영양소 문제있다",
+                "https://naver.com"
+              );
+              break;
+          }
+
+          // chat-row-text 요소에 이름 요소와 내용 요소 추가
+          newRowText.appendChild(newName);
+          newRowText.appendChild(newContent);
+
+          // 새로운 div에 이미지 요소와 chat-row-text 요소 추가
+          newChatRow.appendChild(newImg);
+          newChatRow.appendChild(newRowText);
+
+          // 채팅창에 새로운 채팅 행 추가
+          document.querySelector(".chat-screen").appendChild(newChatRow);
+        }
+
+        // 내용에 메시지를 추가하는 함수
+        function appendMessage(container, imageSrc, messageText, linkURL) {
+          // 이미지 요소 생성
+          const newArticleImage = document.createElement("img");
+          newArticleImage.classList.add("article-image");
+          newArticleImage.src = imageSrc;
+          newArticleImage.alt = "Attached Image";
+
+          // 메시지 요소 생성
+          const newMessage = document.createElement("p");
+          newMessage.classList.add("chat-row-messege");
+          newMessage.innerHTML = `
+            ${newArticleImage.outerHTML}
+            ${messageText}
+            <br/>
+            <a href="${linkURL}" target="_blank">자세한 기사 보러가기</a>
+          `;
+
+          // 내용 요소에 메시지 요소 추가
+          container.appendChild(newMessage);
+        }
+      </script>
+    </main>
+
+    <form class="reply">
+      <div class="reply__column">
+        <i class="fa-regular fa-square-plus fa-lg"></i>
+      </div>
+      <div class="reply__column">
+        <input
+          class="reply__input"
+          type="text"
+          placeholder="Write a messege..."
+        />
+        <i class="fa-regular fa-face-smile fa-lg"></i>
+        <button class="reply__btn">
+          <i class="fa-solid fa-arrow-up fa-lg"></i>
+        </button>
+      </div>
+    </form>
+
+    <script>
+      // 3버튼기능을 위한 함수
+      function createMessage(button) {
+        const chatScreen = document.querySelector(".chat-screen");
+        const newDiv = document.createElement("div");
+        newDiv.classList.add("chat-row");
+
+        const newImg = document.createElement("img");
+        newImg.classList.add("chat-row-img");
+        newImg.src = "img/cats1.png";
+
+        // chat-row-name 요소 생성
+        const newRowText0 = document.createElement("p");
+        newRowText0.classList.add("chat-row-name");
+        newRowText0.textContent = "오늘의 이슈, 오늘의 개정";
+
+        const newRowText = document.createElement("p");
+        newRowText.classList.add("chat-row-messege");
+
+        switch (button) {
+          case "left":
+            newRowText.textContent = "오늘의 이슈";
+            break;
+
+          case "center":
+            newRowText.textContent = "함께 논의";
+            break;
+
+          case "right":
+            newRowText.innerHTML = `
+            <p class="chat-row-messege">투표 현황입니다.</p>
+            <div class="chat-row-info">
+                <p>투표 현황 이미지가 들어갈 것</p>
+            </div>
+        `;
+            // 각 투표 버튼에 클릭 이벤트 추가
+            newRowText
+              .querySelectorAll(".chat-row-messege-vote")
+              .forEach((button) => {
+                button.addEventListener("click", voteButtonClickHandler);
+              });
+            break;
+        }
+
+        newDiv.appendChild(newImg);
+        newDiv.appendChild(newRowText);
+        chatScreen.appendChild(newDiv);
+      }
+    </script>
+
+    <script
+      src="https://kit.fontawesome.com/e14cec3ae0.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

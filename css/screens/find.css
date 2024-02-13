@@ -1,0 +1,147 @@
+.find-screen {
+    padding: 0px var(--space);
+    overflow-x: scroll;
+}
+
+/* find-list */
+.find-screen__list {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+
+.find-screen__listitem{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:25%;
+    text-align: center;
+}
+
+.find-screen__icon {
+    margin: 15px 0px;
+}
+
+
+/* find-recommended */
+.find-screen__recommended {
+    margin: 10px 0px;
+    color:#999999;
+    font-size: 13px;
+}
+
+.find-screen__header {
+    border-top:1px solid #999999;
+    margin: 10px 0px;
+    padding: 10px 0px;
+    color:#999999;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.find-screen__recommended-friends {
+    height:150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* find-openchats */
+.find-screen__openchat-listitem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.find-screen__openchat-listitem-column:first-child{
+    display: flex;
+    flex-direction: column;
+}
+.find-screen__header-column>span {
+    margin-right: 5px;
+}
+
+
+.find-screen__openchat-listitem-title {
+    font-weight: 600;
+}
+.find-screen__openchat-listitem-subtitle {
+    font-size: 12px;
+    color:#999999;
+    margin:10px 0px;
+}
+.find-screen__openchat-listitem-members {
+    font-size: 12px;
+    color:#999999;
+    display: flex;
+    align-items: center;
+}
+.find-screen__openchat-listitem-active {
+    font-weight:600;
+    color:var(--green);
+}
+.find-screen__openchat-listitem-member {
+    height:20px;
+    width: 20px;
+    border-radius: 8px;
+}
+.find-screen__openchat-listitem-number {
+padding: 0px 5px;
+}
+.find-screen__openchat-listitem-profile {
+    height:80px;
+    width: 80px;
+    border-radius: 10px;
+}
+.find-screen__openchat-listitem-column{
+    position:relative;
+}
+.find-screen__openchat-listitem-heart {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    width: 45px;
+    height:15px;
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+    opacity: 0.6;
+    position:absolute;
+    bottom:8px; left:30px;
+}
+.find-screen__openchat-listitem-heart>i {
+    margin-right:3px;
+}
+
+
+
+
+/* header mini-notification */
+.screen-header_icons {
+    position:relative;
+}
+
+.find-header-notification {
+    position:absolute;
+    bottom:20px; right:-7px;
+}
+
+
+
+/* heart animation */
+@keyframes heartbeat {
+    0% {transform: none;}
+    50% {transform: scale(2); color:red;}
+    100% {transform: none;}
+}
+
+.find-screen__openchat-listitem-heart:hover i {
+    animation: heartbeat 0.5s linear infinite;
+}
+
+
+/* blank space for scroll */
+.find-left {height: 80px;}

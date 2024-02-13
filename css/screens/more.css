@@ -1,0 +1,47 @@
+.more-screen {
+    padding: 0px var(--space);
+}
+
+.square-icon,
+.profile-notification {
+    color:var(--green)
+}
+
+.position {
+    position:relative;
+}
+
+.more-notification-mini{
+    position:absolute;
+    left:30px; bottom:25px;
+}
+
+.more-screen__list{
+    padding:5px 0px 15px 0px;
+}
+
+.more-screen__list-column {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+.more-screen__list-column:last-child{
+    justify-content:flex-start;
+}
+
+.more-screen__listitem {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:25%;
+    text-align: center;
+}
+
+.more-screen__icon{
+    margin: 15px 0px;
+}
+
+.more-screen__list:last-child{
+    border-top: 1px solid #999999;
+}
