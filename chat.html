@@ -50,7 +50,7 @@
             <div>
               <p class="chat-row-messege messege">
                 '한두희' 국회의원님의 관심사에 따른 <br /><br />
-                금주 이슈 관심 순위를 알려드립니다.
+                금주 이슈 주목 순위를 알려드립니다.
               </p>
               <p class="chat-row-messege messege">
                 키워드를 눌러 자세한 내용을 확인해보세요.
@@ -130,26 +130,57 @@
         switch (keyword) {
           case "dog":
             imagePath = "news_images/dog.png";
+            news = "id=dog part";
             break;
           case "drug":
             imagePath = "news_images/drug.png";
+            news = "id=drug part";
             break;
           case "food":
             imagePath = "news_images/food.png";
+            news = "id=food part";
             break;
         }
 
-        // div생성, image생성 const화
+        // 새로운 div 생성
         const newDiv = document.createElement("div");
+        newDiv.classList.add("chat-row", "row");
+
+        // 프사
+        const profileImage = document.createElement("img");
+        profileImage.src = "img/cats1.png";
+        profileImage.classList.add("chat-row-img");
+
+        // 이름
+        const newName = document.createElement("p");
+        newName.textContent = "오늘의 이슈, 오늘의 개정";
+        newName.classList.add("chat-row-name");
+
+        // 기사 요약
+        const newText = document.createElement("p");
+        newText.innerHTML = news;
+        newText.classList.add("chat-row-messege", "messege");
+
+        // 기사 이미지
         const newImage = document.createElement("img");
         newImage.src = imagePath;
         newImage.classList.add("chat-keywordimage");
 
-        // div에 이미지 추가
-        newDiv.appendChild(newImage);
+        // 오른쪽 박스
+        const chatRowText = document.createElement("div");
+        chatRowText.classList.add("chat-row-text");
+
+        // 오른쪽 박스에 이름, 말풍선 추가
+        chatRowText.appendChild(newName);
+        newText.appendChild(newImage);
+        chatRowText.appendChild(newText);
+
+        // 전체 박스에 프로필 이미지, 오른쪽 박스 추가
+        newDiv.appendChild(profileImage);
+        newDiv.appendChild(chatRowText);
 
         // 생성한 div를 기존 문서에 추가
-        document.body.appendChild(newDiv);
+        document.querySelector("main").appendChild(newDiv);
       }
     </script>
 
