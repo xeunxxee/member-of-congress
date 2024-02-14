@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chat - Kokoa Clone</title>
+    <title>국회의원view-국회공공데이터경진대회</title>
   </head>
 
   <body class="chat-body">
@@ -204,60 +204,125 @@
     <script>
       /* 하단 3가지 버튼 */
       // 3버튼기능을 위한 함수
-      function createMessage(button) {
-        const chatScreen = document.querySelector(".chat-screen");
-        const newDiv = document.createElement("div");
-        newDiv.classList.add("chat-row", "row");
+      function createMessage(position) {
+        var main = document.querySelector("main");
 
-        const profileImage = document.createElement("img");
-        profileImage.classList.add("chat-row-img");
-        profileImage.src = "img/cats1.png";
+        if (position === "left") {
+          var leftContent = document.createElement("div");
+          leftContent.classList.add("chat-row", "row");
 
-        const newName = document.createElement("p");
-        newName.textContent = "오늘의 이슈, 오늘의 개정";
-        newName.classList.add("chat-row-name");
+          var img = document.createElement("img");
+          img.classList.add("chat-row-img");
+          img.src = "img/cats1.png";
+          leftContent.appendChild(img);
 
-        const newRowText = document.createElement("p");
-        newRowText.classList.add("chat-row-messege");
+          var textContainer = document.createElement("div");
+          textContainer.classList.add("chat-row-text");
+          leftContent.appendChild(textContainer);
 
-        // 오른쪽 박스
-        const chatRowText = document.createElement("div");
-        chatRowText.classList.add("chat-row-text");
+          var name = document.createElement("p");
+          name.classList.add("chat-row-name");
+          name.textContent = "오늘의 이슈, 오늘의 개정";
+          textContainer.appendChild(name);
 
-        switch (button) {
-          case "left":
-            newRowText.textContent = "오늘의 이슈";
-            break;
+          var infoContainer = document.createElement("div");
+          infoContainer.classList.add("chat-row-info");
+          textContainer.appendChild(infoContainer);
 
-          case "center":
-            newRowText.textContent = "함께 논의";
-            break;
+          var message1 = document.createElement("p");
+          message1.classList.add("chat-row-messege", "messege");
+          message1.innerHTML =
+            "'한두희' 국회의원님의 관심사에 따른 <br /><br /> 금주 이슈 주목 순위를 알려드립니다.";
+          infoContainer.appendChild(message1);
 
-          case "right":
-            newRowText.innerHTML = `
-            <p class="chat-row-messege">투표 현황입니다.</p>
-            <div class="chat-row-info">
-                <p>투표 현황 이미지가 들어갈 것</p>
-            </div>
-        `;
-            // 각 투표 버튼에 클릭 이벤트 추가
-            newRowText
-              .querySelectorAll(".chat-row-messege-vote")
-              .forEach((button) => {
-                button.addEventListener("click", voteButtonClickHandler);
-              });
-            break;
+          var message2 = document.createElement("p");
+          message2.classList.add("chat-row-messege", "messege");
+          message2.textContent = "키워드를 눌러 자세한 내용을 확인해보세요.";
+          infoContainer.appendChild(message2);
+
+          var voteContainer = document.createElement("p");
+          voteContainer.classList.add("chat-row-messege", "vote");
+          infoContainer.appendChild(voteContainer);
+
+          var dogButton = createKeywordButton(
+            "dog",
+            "1위",
+            "keyword_images/dog.PNG"
+          );
+          var drugButton = createKeywordButton(
+            "drug",
+            "2위",
+            "keyword_images/drug.PNG"
+          );
+          var foodButton = createKeywordButton(
+            "food",
+            "3위",
+            "keyword_images/food.PNG"
+          );
+
+          voteContainer.appendChild(dogButton);
+          voteContainer.appendChild(drugButton);
+          voteContainer.appendChild(foodButton);
+
+          main.appendChild(leftContent);
         }
-        // 오른쪽 박스에 이름, 말풍선 추가
-        chatRowText.appendChild(newName);
-        chatRowText.appendChild(newRowText);
 
-        // 전체 박스에 프로필 이미지, 오른쪽 박스 추가
-        newDiv.appendChild(profileImage);
-        newDiv.appendChild(chatRowText);
+        // 가운데 버튼: 링크로 이동
+        else if (position === "center") {
+          window.open(
+            "https://www.notion.so/a1e756b25b8d4620ba45dacceb028853",
+            "_blank"
+          );
+        }
 
-        // 생성한 div를 기존 문서에 추가
-        document.querySelector("main").appendChild(newDiv);
+        // 오른쪽 버튼: 투표 현황 설명, 이미지 출력
+        else if (position === "right") {
+          var rightContent = document.createElement("div");
+          rightContent.classList.add("chat-row", "row");
+
+          var img = document.createElement("img");
+          img.classList.add("chat-row-img");
+          img.src = "img/cats1.png";
+          rightContent.appendChild(img);
+
+          var textContainer = document.createElement("div");
+          textContainer.classList.add("chat-row-text");
+          rightContent.appendChild(textContainer);
+
+          var name = document.createElement("p");
+          name.classList.add("chat-row-name");
+          name.textContent = "오늘의 이슈, 오늘의 개정";
+          textContainer.appendChild(name);
+
+          var infoContainer = document.createElement("div");
+          infoContainer.classList.add("chat-row-info");
+          textContainer.appendChild(infoContainer);
+
+          var message = document.createElement("p");
+          message.classList.add("chat-row-messege", "messege");
+          message.textContent = "투표 현황을 알려드립니다.";
+          infoContainer.appendChild(message);
+
+          main.appendChild(rightContent);
+        }
+      }
+
+      function createKeywordButton(id, text, imgSrc) {
+        var button = document.createElement("button");
+        button.classList.add("chat-row-messege-vote");
+        button.textContent = text;
+
+        var img = document.createElement("img");
+        img.classList.add("chat-keywordimage");
+        img.src = imgSrc;
+
+        button.appendChild(img);
+
+        button.onclick = function () {
+          showKeyword(id);
+        };
+
+        return button;
       }
     </script>
 
