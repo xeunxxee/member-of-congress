@@ -317,18 +317,6 @@
 
 
 
-/* 국회의원 자세히보기 말풍선 조정 */
-.chat-row-messege a {
-    display: inline-block; /* 링크를 인라인 블록 요소로 설정하여 위치를 조정할 수 있게 함 */
-    margin-top: 5px; /* 다른 말풍선과의 간격 조정 */
-    padding: 5px 10px; /* 말풍선 내부 여백 설정 */
-    background-color: #3498db; /* 배경색 설정 */
-    color: white; /* 텍스트 색상 설정 */
-    border-radius: 5px; /* 테두리 모서리를 둥글게 만듦 */
-    margin-left: 10px; /* 이미지와 말풍선 사이의 간격 조정 */
-    
-}
-
 /*패딩조절들 아직 안함*/
   
 .chat-voteimage {
