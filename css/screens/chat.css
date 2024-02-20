@@ -117,7 +117,7 @@
     border-top-left-radius: 0;
     padding:10px;
     margin: 7px 0px 0px 0px;
-    display: flex;
+    line-height: 1.2; /* 현재 글꼴 크기의 1.5배로 줄 간격 설정 */
 
 }
 
@@ -322,4 +322,12 @@
 .chat-voteimage {
     width: 200px;
     height: 200px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.newsMessege {
+    display:flex;
 }
