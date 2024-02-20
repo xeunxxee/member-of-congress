@@ -107,7 +107,7 @@
 
 .chat-row-info {
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
 }
 
 .chat-row-messege {
@@ -117,7 +117,7 @@
     border-top-left-radius: 0;
     padding:10px;
     margin: 7px 0px 0px 0px;
-    
+    display: flex;
 
 }
 
@@ -331,3 +331,7 @@
 
 /*패딩조절들 아직 안함*/
   
+.chat-voteimage {
+    width: 200px;
+    height: 200px;
+}

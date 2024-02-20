@@ -297,10 +297,20 @@
           infoContainer.classList.add("chat-row-info");
           textContainer.appendChild(infoContainer);
 
+          var message2 = document.createElement("p");
+          message2.classList.add("chat-row-messege", "messege");
+          message2.innerHTML =
+            "국민들이 현재 가장 시급하다고  <br /><br /> 생각하는 사안은 '반려견'이에요.";
+          infoContainer.appendChild(message2);
+
           var message = document.createElement("p");
           message.classList.add("chat-row-messege", "messege");
-          message.textContent = "투표 현황을 알려드립니다.";
           infoContainer.appendChild(message);
+
+          var voteimg = document.createElement("img");
+          voteimg.classList.add("chat-voteimage");
+          voteimg.src = "vote_images/vote.png";
+          message.appendChild(voteimg);
 
           main.appendChild(rightContent);
         }
